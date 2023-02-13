@@ -1,10 +1,6 @@
-#include <cstdlib>
-#include <ctime>
-#include <time.h>
 #include "functions.h"
 #include "vector"
 
-using namespace std;
 
 struct studentas {
     string vardas;
@@ -72,8 +68,8 @@ int main() {
         if(atsitiktiniaiRez == "t"){
             vector<string> ndRez(stoi(visiStudentai[i].ndKiekis));
             for (int j = 0; j < stoi(visiStudentai[i].ndKiekis); j++) {
-                visiStudentai[i].ndRez[j] = rand() % 10 + 1;
-                bendrasNDbalas = stoi(visiStudentai[i].ndRez[j]) + bendrasNDbalas;
+                visiStudentai[i].ndRez.push_back(to_string(rand() % 10 + 1));
+                bendrasNDbalas = stoi(visiStudentai[i].ndRez.at(j)) + bendrasNDbalas;
             }
         } else{
             vector<string> ndRez(stoi(visiStudentai[i].ndKiekis));
@@ -119,9 +115,9 @@ int main() {
         cout << "vardas: " << visiStudentai[i].vardas << endl;
         cout << "pavarde: " << visiStudentai[i].pavarde << endl;
         if(medArVid == "v"){
-            cout << "Balas(vid.): " << visiStudentai[i].galutinisBalas << endl;
+            cout << "Balas(vid.): " << fixed << setprecision(2) << visiStudentai[i].galutinisBalas << endl;
         } else {
-            cout << "Balas(med.): " << visiStudentai[i].galutinisBalas << endl;
+            cout << "Balas(med.): " << fixed << setprecision(2) << visiStudentai[i].galutinisBalas << endl;
         }
 
         cout << endl;

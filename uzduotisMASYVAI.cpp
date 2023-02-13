@@ -1,9 +1,4 @@
-#include <cstdlib>
-#include <ctime>
-#include <time.h>
 #include "functions.h"
-
-using namespace std;
 
 struct studentas {
     string vardas;
@@ -115,9 +110,9 @@ int main() {
         cout << "vardas: " << visiStudentai[i].vardas << endl;
         cout << "pavarde: " << visiStudentai[i].pavarde << endl;
         if(medArVid == "v"){
-            cout << "Balas(vid.): " << visiStudentai[i].galutinisBalas << endl;
+            cout << "Balas(vid.): " << fixed << setprecision(2) << visiStudentai[i].galutinisBalas << endl;
         } else {
-            cout << "Balas(med.): " << visiStudentai[i].galutinisBalas << endl;
+            cout << "Balas(med.): " << fixed << setprecision(2) << visiStudentai[i].galutinisBalas << endl;
         }
 
         cout << endl;
