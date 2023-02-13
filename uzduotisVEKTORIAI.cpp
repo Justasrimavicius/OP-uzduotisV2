@@ -2,6 +2,7 @@
 #include <ctime>
 #include <time.h>
 #include "functions.h"
+#include "vector"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ struct studentas {
     string vardas;
     string pavarde;
     string egzaminoRez;
-    string* ndRez;
+    vector<string> ndRez;
     string ndKiekis;
     double galutinisBalas;
 };
@@ -24,7 +25,7 @@ int main() {
         cout << "Studentu skaicius turi buti sveikasis skaicius. Iveskite is naujo." << endl; 
         goto studentuSkIvedimas;
     }
-
+    
     studentas* visiStudentai = new studentas[stoi(studSkaicius)];
 	srand(time(0));
 
@@ -69,23 +70,26 @@ int main() {
         int bendrasNDbalas = 0;
 
         if(atsitiktiniaiRez == "t"){
-            visiStudentai[i].ndRez = new string[stoi(visiStudentai[i].ndKiekis)];
+            vector<string> ndRez(stoi(visiStudentai[i].ndKiekis));
             for (int j = 0; j < stoi(visiStudentai[i].ndKiekis); j++) {
                 visiStudentai[i].ndRez[j] = rand() % 10 + 1;
                 bendrasNDbalas = stoi(visiStudentai[i].ndRez[j]) + bendrasNDbalas;
             }
         } else{
-            visiStudentai[i].ndRez = new string[stoi(visiStudentai[i].ndKiekis)];
+            vector<string> ndRez(stoi(visiStudentai[i].ndKiekis));
 
             for (int j = 0; j < stoi(visiStudentai[i].ndKiekis); j++) {
                 uzdRezIvedimas:
                 cout << "Rezultatas uzduoties " << j + 1 << ": ";
-                cin >> visiStudentai[i].ndRez[j];
-                if(!isNumber(visiStudentai[i].ndRez[j])){
+                string val;
+                cin >> val;
+                visiStudentai[i].ndRez.push_back(val);
+
+                if(!isNumber(visiStudentai[i].ndRez.at(j))){
                     cout << "Uzduoties rezultatas turi buti sveikasis skaicius. Iveskite is naujo." << endl;
                     goto uzdRezIvedimas;
                 } else {
-                    bendrasNDbalas = bendrasNDbalas + stoi(visiStudentai[i].ndRez[j]);
+                    bendrasNDbalas = bendrasNDbalas + stoi(visiStudentai[i].ndRez.at(j));
                 }
             }
         }
@@ -104,9 +108,9 @@ int main() {
         }
         if(medArVid == "m"){
             if(stoi(visiStudentai[i].ndKiekis) % 2 == 0){
-                visiStudentai[i].galutinisBalas =  (double)(stoi(visiStudentai[i].ndRez[stoi(visiStudentai[i].ndKiekis)/2]) + stoi(visiStudentai[i].ndRez[stoi(visiStudentai[i].ndKiekis)/2 - 1]))/2 * 0.4 + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
+                visiStudentai[i].galutinisBalas =  (double)(stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2)) + stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2 - 1)))/2 * 0.4 + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
             } else {
-                visiStudentai[i].galutinisBalas = stoi(visiStudentai[i].ndRez[stoi(visiStudentai[i].ndKiekis)/2]) * 0.4 + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
+                visiStudentai[i].galutinisBalas = stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2)) * 0.4 + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
             }
         }
 
@@ -123,9 +127,6 @@ int main() {
         cout << endl;
     }
 
-    for (int i = 0; i < stoi(studSkaicius); i++) {
-        delete[] visiStudentai[i].ndRez;
-    }
     delete[] visiStudentai;
 
     return 0;
