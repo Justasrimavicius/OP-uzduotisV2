@@ -51,7 +51,7 @@ int main() {
     cout << "-------------------------------------------------------------------------------" << endl;
 
 
-
+    cout << visiStudentai.size() << endl;
 
     for(int i = 0; i < stoi(studSkaicius); i++){
         cout << setw(15) << visiStudentai[i].vardas;
