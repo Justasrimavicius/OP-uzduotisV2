@@ -1,5 +1,7 @@
 #include "functions.h"
 #include "vector"
+#include <string>
+
 using namespace std;
 
 
@@ -14,7 +16,7 @@ struct studentas {
 
 void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaicius);
 void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName);
-int compareStudents(const studentas& s1, const studentas& s2);
+
 void quicksort(std::vector<studentas>& arr, int low, int high);
 int partition(std::vector<studentas>& arr, int low, int high);
 
@@ -44,7 +46,6 @@ int main() {
 
     // rusiavimas pagal varde/pavarde
     quicksort(visiStudentai, 0, visiStudentai.size() - 1);
-
 
     cout << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(20) << "Galutinis(vid.)" << setw(20) << "Galutinis(med.)" << endl;
     cout << "-------------------------------------------------------------------------------" << endl;
@@ -178,17 +179,15 @@ void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName){
 
 }
 
-int compareStudents(const studentas& s1, const studentas& s2) {
-    int cmp = s1.vardas.compare(s2.vardas);
-    if (cmp != 0) return cmp;
-    return s1.pavarde.compare(s2.pavarde);
-}
-
-int partition(vector<studentas>& arr, int low, int high) {
+int partition(vector<studentas>& arr, int low, int high){
     studentas pivot = arr[high];
     int i = low - 1;
+
     for (int j = low; j <= high - 1; j++) {
-        if (compareStudents(arr[j], pivot) <= 0) {
+        if (strcmp((arr[j].vardas).c_str(), (pivot.vardas).c_str()) < 0) {
+            i++;
+            swap(arr[i], arr[j]);
+        } else if(strcmp((arr[j].vardas).c_str(), (pivot.vardas).c_str()) == 0){
             i++;
             swap(arr[i], arr[j]);
         }
@@ -197,7 +196,7 @@ int partition(vector<studentas>& arr, int low, int high) {
     return (i + 1);
 }
 
-void quicksort(vector<studentas>& arr, int low, int high) {
+void quicksort(vector<studentas>& arr, int low, int high){
     if (low < high) {
         int pi = partition(arr, low, high);
         quicksort(arr, low, pi - 1);
