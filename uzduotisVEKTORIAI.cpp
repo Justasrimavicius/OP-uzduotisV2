@@ -5,7 +5,6 @@
 using namespace std;
 
 void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaicius);
-void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName);
 
 
 int main() {
@@ -125,47 +124,5 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
         studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
 
         visiStudentai.push_back(studentas);
-    }
-}
-
-void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName){
-    try{
-        ifstream failas(fileName + ".txt");
-        string eilute;
-
-        getline(failas, eilute);
-        istringstream iss(eilute);
-        vector<string> headers;
-        string header;
-        while (iss >> header) {
-            headers.push_back(header);
-        }
-
-        while (getline(failas, eilute)){
-            istringstream iss(eilute);
-            studentas studentas;
-            iss >> studentas.vardas >> studentas.pavarde;
-
-            string nd;
-            int bendrasNDbalas = 0;
-            int ndQty = 0;
-            for (int i = 0; i < headers.size() - 3; ++i) {
-                iss >> nd;
-                studentas.ndRez.push_back(nd);
-                bendrasNDbalas += stoi(nd);
-                nd = "";
-                ndQty++;
-            }
-
-            iss >> studentas.egzaminoRez;
-            studentas.ndKiekis = to_string(ndQty);
-            studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
-
-            visiStudentai.push_back(studentas);
-        }
-
-        failas.close();
-    } catch (...) {
-        cout << "Klaida ivedant duomenis is failo." << endl;
     }
 }
