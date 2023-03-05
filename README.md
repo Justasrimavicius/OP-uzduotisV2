@@ -34,3 +34,11 @@ Reikalavimai output’ui: studentai turi būti surūšiuoti pagal vardus (ar 
 
 # V0.3
 Papildyta V0.2 versija - functions.h faile perkelta strucktura bei rikiavimo algoritmas, prideti try/catch blokai.
+
+# V0.4
+Papildyta V0.3 versija - sukurtos šios funkcijos:
+    sortStudents() - surikiuoja studentus į atskirus failus pagal jų galutinį balą(< 5 studentai eis į ...blogi.txt, likusieji į ...protingi.txt);
+    generateFile() - sukuria failą, kuriame yra tam tikras kiekis studentų su tam tikru kiekiu namų darbų;
+Ir šie failai:
+    testGenerator.cpp - generuoja testavimo failus.
+    greicioAnalize.cpp - atlieka greicio analize(sukuria failus su 1000, 10000, 100000, ... studentų, juos nuskaito, atskiria į skirtingus failus).
