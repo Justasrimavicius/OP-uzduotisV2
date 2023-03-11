@@ -16,6 +16,7 @@ int main() {
     cin >> dataFaileArIvesti; // arba "f", arba failo pavadinimas
     if(dataFaileArIvesti != "f"){
         duomenysIsFailo(visiStudentai, dataFaileArIvesti);
+        if(visiStudentai.size() == 0)return 0;
         studSkaicius = to_string(visiStudentai.size());
 
     } else {

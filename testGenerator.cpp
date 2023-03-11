@@ -4,8 +4,6 @@
 
 using namespace std;
 
-int generateFile();
-
 int main(){
     string studKiekis;
     string ndKiekis;
@@ -17,7 +15,3 @@ int main(){
 
     generateFile(studKiekis, ndKiekis);
 }
-
-
-
-
