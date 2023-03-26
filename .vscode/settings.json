@@ -71,6 +71,8 @@
         "__functional_03": "cpp",
         "fstream": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "list": "cpp",
+        "filesystem": "cpp"
     }
 }

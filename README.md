@@ -42,3 +42,15 @@ Papildyta V0.3 versija - sukurtos šios funkcijos:
 Ir šie failai:
     testGenerator.cpp - generuoja testavimo failus.
     greicioAnalize.cpp - atlieka greicio analize(sukuria failus su 1000, 10000, 100000, ... studentų, juos nuskaito, atskiria į skirtingus failus).
+
+# V0.5
+Procesoriaus tipas	        Apple M1
+Branduoliai	                8
+Procesoriaus modelis	    Apple M1 (8 branduolių)
+
+Operatyvioji RAM atmintis	8 GB
+Kietasis diskas	            256 GB
+Atminties tipas	            SSD
+
+Vaizdo plokštė	            Apple M1
+Vaizdo plokštės modelis	    Apple M1 (7 branduolių)

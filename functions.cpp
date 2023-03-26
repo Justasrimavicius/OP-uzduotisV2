@@ -8,13 +8,13 @@ bool isNumber(const std::string &s){
     }
     return true;
 }
-
-void merge(std::vector<studentas>& arr, int l, int m, int r){
+template <typename T>
+void merge(T& arr, int l, int m, int r){
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
  
-    std::vector<studentas> L(n1), R(n2);
+    T L(n1), R(n2);
  
     for (i = 0; i < n1; i++)
         L[i] = arr[l + i];
@@ -48,8 +48,9 @@ void merge(std::vector<studentas>& arr, int l, int m, int r){
         k++;
     }
 }
- 
-void mergesort(std::vector<studentas>& arr, int l, int r) {
+
+template <typename T>
+void mergesort(T& arr, int l, int r) {
     if (l < r) {
         int m = l + (r - l) / 2;
  
