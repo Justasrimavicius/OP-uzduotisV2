@@ -54,3 +54,9 @@ Atminties tipas	            SSD
 
 Vaizdo plokštė	            Apple M1
 Vaizdo plokštės modelis	    Apple M1 (7 branduolių)
+
+# V1.0
+Optimizacijos funkcija, testuojanti vector, list ir deque konteineriu naudojimo sparta.
+rusiavimoOptimizavimas.cpp faile galima kurti studentu failus, testuoti vektor konteineri nenaudojant tam skirtu algoritmu ir juos naudojant, bei testuoti deque, list ir vector konteinerius naudojant 2 optimizavimo metodus.
+
+Funkciju paleidimas aprasytas makefile
