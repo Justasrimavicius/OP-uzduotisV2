@@ -26,7 +26,7 @@ int main(){
             
             int j = 0;
             while (j < visiStudentaiVEC.size()) {
-                if (visiStudentaiVEC.at(j).galutinisBalas >= 5) {
+                if (visiStudentaiVEC.at(j).getGalutinisBalas() >= 5) {
                     geriStudentaiVEC.push_back(visiStudentaiVEC.at(j));
                     visiStudentaiVEC.erase(visiStudentaiVEC.begin() + j);
                 } else {
@@ -48,11 +48,11 @@ int main(){
             auto t1startVEC = chrono::high_resolution_clock::now();
         
             auto it = stable_partition(visiStudentaiVEC.begin(), visiStudentaiVEC.end(), [](const studentas& student){
-                return student.galutinisBalas >= 5;
+                return student.getGalutinisBalas() >= 5;
             });
 
             remove_copy_if(visiStudentaiVEC.begin(), it, back_inserter(geriStudentaiVEC), [] (const studentas& student){
-                return student.galutinisBalas < 5;
+                return student.getGalutinisBalas() < 5;
             });
 
             visiStudentaiVEC.erase(visiStudentaiVEC.begin(), it);
@@ -88,7 +88,7 @@ int main(){
 
                 auto t1startVEC = chrono::high_resolution_clock::now();
                 for(int j = 0; j < visiStudentaiVEC.size(); j++){
-                    if(visiStudentaiVEC.at(j).galutinisBalas < 5){
+                    if(visiStudentaiVEC.at(j).getGalutinisBalas() < 5){
                         blogiStudentaiVEC.push_back(visiStudentaiVEC.at(j));
                     } else {
                         geriStudentaiVEC.push_back(visiStudentaiVEC.at(j));
@@ -109,7 +109,7 @@ int main(){
 
                 auto t1startLIST = chrono::high_resolution_clock::now();
                 for(list<studentasList>::iterator it = visiStudentaiLIST.begin(); it != visiStudentaiLIST.end(); ++it){
-                    if(it->galutinisBalas < 5){
+                    if(it->getGalutinisBalas() < 5){
                         blogiStudentaiLIST.push_back(visiStudentaiLIST.front());
                     } else {
                         geriStudentaiLIST.push_back(visiStudentaiLIST.front());
@@ -130,7 +130,7 @@ int main(){
 
                 auto t1startDEQUE = chrono::high_resolution_clock::now();
                 for(int j = 0; j < visiStudentaiDEQUE.size(); j++){
-                    if(visiStudentaiDEQUE.at(j).galutinisBalas < 5){
+                    if(visiStudentaiDEQUE.at(j).getGalutinisBalas() < 5){
                         blogiStudentaiDEQUE.push_back(visiStudentaiDEQUE.at(j));
                     } else {
                         geriStudentaiDEQUE.push_back(visiStudentaiDEQUE.at(j));
@@ -155,7 +155,7 @@ int main(){
                 
                 int j = 0;
                 while (j < visiStudentaiVEC.size()) {
-                    if (visiStudentaiVEC.at(j).galutinisBalas >= 5) {
+                    if (visiStudentaiVEC.at(j).getGalutinisBalas() >= 5) {
                         geriStudentaiVEC.push_back(visiStudentaiVEC.at(j));
                         visiStudentaiVEC.erase(visiStudentaiVEC.begin() + j);
                     } else {
@@ -177,7 +177,7 @@ int main(){
                 auto t1startLIST = chrono::high_resolution_clock::now();
                 for (auto it = visiStudentaiLIST.begin(); it != visiStudentaiLIST.end(); ) {
                     auto next_it = std::next(it);
-                    if (it->galutinisBalas >= 5) {
+                    if (it->getGalutinisBalas() >= 5) {
                         geriStudentaiLIST.push_back(std::move(*it));
                         visiStudentaiLIST.erase(it);
                     }
@@ -199,7 +199,7 @@ int main(){
                 auto t1startDEQUE = chrono::high_resolution_clock::now();
                 int j = 0;
                 while (j < visiStudentaiDEQUE.size()) {
-                    if (visiStudentaiDEQUE.at(j).galutinisBalas >= 5) {
+                    if (visiStudentaiDEQUE.at(j).getGalutinisBalas() >= 5) {
                         geriStudentaiDEQUE.push_back(visiStudentaiDEQUE.at(j));
                         visiStudentaiDEQUE.erase(visiStudentaiDEQUE.begin() + j);
                     } else {

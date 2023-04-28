@@ -2,7 +2,7 @@
 
 # Failas testuoja deque, vector ir list konteinerius naudojantis 2 optimizavimo budais.
 rusiavimoOptimizavimas:
-	g++ -std=c++11 functions.cpp compareFunctions.cpp rusiavimoOptimizavimas.cpp -o run && ./run
+	g++ -std=c++11 functions.cpp compareFunctions.cpp rusiavimoOptimizavimas.cpp -O3 -o run && ./run
 
 # Failas palygina deque, vector ir list tipo konteineriu sparta ivairiuose situacijose.
 greicioAnalize:

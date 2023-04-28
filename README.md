@@ -60,3 +60,34 @@ Optimizacijos funkcija, testuojanti vector, list ir deque konteineriu naudojimo 
 rusiavimoOptimizavimas.cpp faile galima kurti studentu failus, testuoti vektor konteineri nenaudojant tam skirtu algoritmu ir juos naudojant, bei testuoti deque, list ir vector konteinerius naudojant 2 optimizavimo metodus.
 
 Funkciju paleidimas aprasytas makefile
+
+# V1.1
+Struct duomenų tipo pakeitimas į class.
+Dauguma funkcijų buvo atnaujintos dėl šių pakeitimų.
+Greičio palyginimas - deque struktūra, be funkcijų optimizacijos(rusiavimoOptimizavimas.cpp, 2 optimizacija):
+Naudojant klases:
+
+1000        0.01464
+10000       1.48135
+100000    153.69425
+
+Naudojant struktūras:
+1000        0.01664
+10000       1.49143
+100000    151.95475
+
+Su mažiau duomenų, naudojant klases vietoj struktūrų, klasės yra truputį greitesnės už struktūras(labai minimaliai).
+
+Naudojant -O2 optimizavimą su klasėmis: 
+
+1000        0.00097
+10000       0.09486
+100000      9.49361
+
+Naudojant optimizaciją, su 1000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 15 kartų greičiau.
+Naudojant optimizaciją, su 10000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 15.5 kartų greičiau.
+Naudojant optimizaciją, su 100000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 16 kartų greičiau.
+
+Duomenys su 03 optimizacija labai panašūs.
+
+

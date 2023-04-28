@@ -18,22 +18,30 @@ void duomenysIsFailoLIST(list<studentasList>& visiStudentai, string fileName){
         while (getline(failas, eilute)){
             istringstream iss(eilute);
             studentasList studentas;
-            iss >> studentas.vardas >> studentas.pavarde;
+            string v;
+            string p;
+            iss >> v >> p;
+            studentas.setVardas(v);
+            studentas.setPavarde(p);
 
             string nd;
             int bendrasNDbalas = 0;
             int ndQty = 0;
             for (int i = 0; i < headers.size() - 3; ++i) {
                 iss >> nd;
-                studentas.ndRez.push_back(nd);
+                auto x = studentas.getNdRez();
+                x.push_back(nd);
+                studentas.setNdRez(x);
                 bendrasNDbalas += stoi(nd);
                 nd = "";
                 ndQty++;
             }
-
-            iss >> studentas.egzaminoRez;
-            studentas.ndKiekis = to_string(ndQty);
-            studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
+            string er;
+            iss >> er;
+            studentas.setEgzaminoRez(er);
+            studentas.setNdKiekis(to_string(ndQty));
+            studentas.skaiciuotiGalutiniBala();
+            //  = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
 
             visiStudentai.push_back(studentas);
         }
@@ -60,22 +68,30 @@ void duomenysIsFailoDEQUE(deque<studentasDeque>& visiStudentai, string fileName)
         while (getline(failas, eilute)){
             istringstream iss(eilute);
             studentasDeque studentas;
-            iss >> studentas.vardas >> studentas.pavarde;
+            string v;
+            string p;
+            iss >> v >> p;
+            studentas.setVardas(v);
+            studentas.setPavarde(p);
 
             string nd;
             int bendrasNDbalas = 0;
             int ndQty = 0;
             for (int i = 0; i < headers.size() - 3; ++i) {
                 iss >> nd;
-                studentas.ndRez.push_back(nd);
+                auto x = studentas.getNdRez();
+                x.push_back(nd);
+                studentas.setNdRez(x);
                 bendrasNDbalas += stoi(nd);
                 nd = "";
                 ndQty++;
             }
-
-            iss >> studentas.egzaminoRez;
-            studentas.ndKiekis = to_string(ndQty);
-            studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
+            string er;
+            iss >> er;
+            studentas.setEgzaminoRez(er);
+            studentas.setNdKiekis(to_string(ndQty));
+            studentas.skaiciuotiGalutiniBala();
+            //  = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
 
             visiStudentai.push_back(studentas);
         }
@@ -89,7 +105,7 @@ void sortStudentsLIST(list<studentasList> visiStudentai, list<studentasList>& bl
     list<studentasList>::iterator it = visiStudentai.begin();
   
     for (std::list<studentasList>::iterator it = visiStudentai.begin(); it != visiStudentai.end(); ++it){
-        if(it->galutinisBalas < 5){
+        if(it->getGalutinisBalas() < 5){
         blogi.push_back(*it);
     } else {
         geri.push_back(*it);
@@ -99,7 +115,7 @@ void sortStudentsLIST(list<studentasList> visiStudentai, list<studentasList>& bl
 
 void sortStudentsDEQUE(deque<studentasDeque> visiStudentai, deque<studentasDeque>& blogi, deque<studentasDeque>& geri){ // "studentai1000" - be .txt
     for(int i = 0; i < visiStudentai.size(); i++){
-        if(visiStudentai.at(i).galutinisBalas < 5){
+        if(visiStudentai.at(i).getGalutinisBalas() < 5){
             blogi.push_back(visiStudentai.at(i));
         } else {
             geri.push_back(visiStudentai.at(i));

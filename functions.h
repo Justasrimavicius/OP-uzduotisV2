@@ -59,23 +59,111 @@ class studentas {
 
 };
 
-struct studentasList {
+class studentasList {
+    private:
     std::string vardas;
     std::string pavarde;
     std::string egzaminoRez;
     std::list<std::string> ndRez;
     std::string ndKiekis;
     double galutinisBalas;
+    public:
+        studentasList() : vardas(""), pavarde(""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
+        studentasList(const std::string& v, const std::string& p, const std::string& e, const std::list<std::string>& nd, const std::string& k)
+            : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
+
+        void setVardas(const std::string& v) { vardas = v; }
+        std::string getVardas() const { return vardas; }
+
+        void setPavarde(const std::string& p) { pavarde = p; }
+        std::string getPavarde() const { return pavarde; }
+
+        void setEgzaminoRez(const std::string& e) { egzaminoRez = e; }
+        std::string getEgzaminoRez() const { return egzaminoRez; }
+
+        void setNdRez(const std::list<std::string>& nd) { ndRez = nd; }
+        std::list<std::string> getNdRez() const { return ndRez; }
+
+        void setNdKiekis(const std::string& k) { ndKiekis = k; }
+        std::string getNdKiekis() const { return ndKiekis; }
+
+        double getGalutinisBalas() const { return galutinisBalas; }
+
+        void skaiciuotiGalutiniBala() {
+            double ndSuma = 0;
+            for (auto& nd : ndRez) {
+                ndSuma += std::stod(nd);
+            }
+            double egzaminoRezultatas = std::stod(egzaminoRez);
+            double galutinis = 0.4 * ndSuma / ndRez.size() + 0.6 * egzaminoRezultatas;
+            galutinisBalas = galutinis;
+        }
+
+
 };
 
-struct studentasDeque {
+
+// struct studentasList {
+//     std::string vardas;
+//     std::string pavarde;
+//     std::string egzaminoRez;
+//     std::list<std::string> ndRez;
+//     std::string ndKiekis;
+//     double galutinisBalas;
+// };
+
+
+class studentasDeque {
+    private:
     std::string vardas;
     std::string pavarde;
     std::string egzaminoRez;
     std::deque<std::string> ndRez;
     std::string ndKiekis;
     double galutinisBalas;
+    public:
+        studentasDeque() : vardas(""), pavarde(""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
+        studentasDeque(const std::string& v, const std::string& p, const std::string& e, const std::deque<std::string>& nd, const std::string& k)
+            : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
+
+        void setVardas(const std::string& v) { vardas = v; }
+        std::string getVardas() const { return vardas; }
+
+        void setPavarde(const std::string& p) { pavarde = p; }
+        std::string getPavarde() const { return pavarde; }
+
+        void setEgzaminoRez(const std::string& e) { egzaminoRez = e; }
+        std::string getEgzaminoRez() const { return egzaminoRez; }
+
+        void setNdRez(const std::deque<std::string>& nd) { ndRez = nd; }
+        std::deque<std::string> getNdRez() const { return ndRez; }
+
+        void setNdKiekis(const std::string& k) { ndKiekis = k; }
+        std::string getNdKiekis() const { return ndKiekis; }
+
+        double getGalutinisBalas() const { return galutinisBalas; }
+
+        void skaiciuotiGalutiniBala() {
+            double ndSuma = 0;
+            for (auto& nd : ndRez) {
+                ndSuma += std::stod(nd);
+            }
+            double egzaminoRezultatas = std::stod(egzaminoRez);
+            double galutinis = 0.4 * ndSuma / ndRez.size() + 0.6 * egzaminoRezultatas;
+            galutinisBalas = galutinis;
+        }
+
+
 };
+
+// struct studentasDeque {
+//     std::string vardas;
+//     std::string pavarde;
+//     std::string egzaminoRez;
+//     std::deque<std::string> ndRez;
+//     std::string ndKiekis;
+//     double galutinisBalas;
+// };
 
 bool isNumber(const std::string &s);
 

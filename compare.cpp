@@ -31,10 +31,10 @@ int main(){
 
                 auto t2startVEC = chrono::high_resolution_clock::now(); // 2 testas - rusiavimas didejimo tvarka pradzia
                 sort(visiStudentaiVEC.begin(), visiStudentaiVEC.end(), [](const studentas& nr1, const studentas& nr2){
-                    if(nr1.vardas == nr2.vardas){
-                        return nr1.pavarde < nr2.pavarde;
+                    if(nr1.getVardas() == nr2.getVardas()){
+                        return nr1.getPavarde() < nr2.getPavarde();
                     }
-                    return nr1.vardas < nr2.vardas;
+                    return nr1.getVardas() < nr2.getVardas();
                 });
 
                 auto t2endVEC = chrono::high_resolution_clock::now();
@@ -66,10 +66,10 @@ int main(){
 
                 auto t2startLIST = chrono::high_resolution_clock::now();
                 visiStudentaiLIST.sort([](const studentasList& nr1, const studentasList& nr2){
-                    if(nr1.vardas == nr2.vardas){
-                        return nr1.pavarde < nr2.pavarde;
+                    if(nr1.getVardas() == nr2.getVardas()){
+                        return nr1.getPavarde() < nr2.getPavarde();
                     }
-                    return nr1.vardas < nr2.vardas;
+                    return nr1.getVardas() < nr2.getVardas();
                 });
 
                 auto t2endLIST = chrono::high_resolution_clock::now();
@@ -102,10 +102,10 @@ int main(){
 
                 auto t2startDEQUE = chrono::high_resolution_clock::now();
                 sort(visiStudentaiDEQUE.begin(), visiStudentaiDEQUE.end(), [](const studentasDeque& nr1, const studentasDeque& nr2){
-                    if(nr1.vardas == nr2.vardas){
-                        return nr1.pavarde < nr2.pavarde;
+                    if(nr1.getVardas() == nr2.getVardas()){
+                        return nr1.getPavarde() < nr2.getPavarde();
                     }
-                    return nr1.vardas < nr2.vardas;
+                    return nr1.getVardas() < nr2.getVardas();
                 });
                 auto t2endDEQUE = chrono::high_resolution_clock::now();
                 
@@ -135,8 +135,8 @@ int main(){
 
 
 bool compareFunc(studentas& nr1, studentas& nr2){
-    return strcmp(nr1.vardas.c_str(), nr2.vardas.c_str());
+    return strcmp(nr1.getVardas().c_str(), nr2.getVardas().c_str());
 }
 bool compareFuncLIST(studentasList& nr1, studentasList& nr2){
-    return strcmp(nr1.vardas.c_str(), nr2.vardas.c_str());
+    return strcmp(nr1.getVardas().c_str(), nr2.getVardas().c_str());
 }
