@@ -8,58 +8,7 @@ bool isNumber(const std::string &s){
     }
     return true;
 }
-template <typename T>
-void merge(T& arr, int l, int m, int r){
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
- 
-    T L(n1), R(n2);
- 
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + j + 1];
- 
-    i = 0;
-    j = 0;
-    k = l;
-    while (i < n1 && j < n2){
-        if (L[i].vardas <= R[j].vardas){
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
- 
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
- 
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
 
-template <typename T>
-void mergesort(T& arr, int l, int r) {
-    if (l < r) {
-        int m = l + (r - l) / 2;
- 
-        mergesort(arr, l, m);
-        mergesort(arr, m + 1, r);
- 
-        merge(arr, l, m, r);
-    }
-}
 
 void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName){
     try{
@@ -78,22 +27,30 @@ void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName){
         while (getline(failas, eilute)){
             istringstream iss(eilute);
             studentas studentas;
-            iss >> studentas.vardas >> studentas.pavarde;
+            string v;
+            string p;
+            iss >> v >> p;
+            studentas.setVardas(v);
+            studentas.setPavarde(p);
 
             string nd;
             int bendrasNDbalas = 0;
             int ndQty = 0;
             for (int i = 0; i < headers.size() - 3; ++i) {
                 iss >> nd;
-                studentas.ndRez.push_back(nd);
+                auto x = studentas.getNdRez();
+                x.push_back(nd);
+                studentas.setNdRez(x);
                 bendrasNDbalas += stoi(nd);
                 nd = "";
                 ndQty++;
             }
-
-            iss >> studentas.egzaminoRez;
-            studentas.ndKiekis = to_string(ndQty);
-            studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
+            string er;
+            iss >> er;
+            studentas.setEgzaminoRez(er);
+            studentas.setNdKiekis(to_string(ndQty));
+            studentas.skaiciuotiGalutiniBala();
+            //  = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
 
             visiStudentai.push_back(studentas);
         }
@@ -136,7 +93,7 @@ int generateFile(string studKiekis, string ndKiekis){
 
 void sortStudents(vector<studentas> visiStudentai, vector<studentas>& blogi, vector<studentas>& geri){ // "studentai1000" - be .txt
     for(int i = 0; i < visiStudentai.size(); i++){
-        if(visiStudentai.at(i).galutinisBalas < 5){
+        if(visiStudentai.at(i).getGalutinisBalas() < 5){
             blogi.push_back(visiStudentai.at(i));
         } else {
             geri.push_back(visiStudentai.at(i));
@@ -149,7 +106,7 @@ void outputFile(string fileName, vector<studentas>& vector){
 
     outfile << left << setw(20) << "Vardas" << left << setw(20) << "Pavarde";
 
-    for(int i = 1; i <= stoi(vector.at(0).ndKiekis); i++){
+    for(int i = 1; i <= stoi(vector.at(0).getNdKiekis()); i++){
         outfile << left << setw(10) << "ND" + to_string(i);
     }
 
@@ -157,13 +114,13 @@ void outputFile(string fileName, vector<studentas>& vector){
 
     int size = vector.size();
     for(int i = 0; i < size; i++){
-        outfile << left << setw(20) << vector.at(i).vardas << left << setw(20) << vector.at(i).pavarde;
+        outfile << left << setw(20) << vector.at(i).getVardas() << left << setw(20) << vector.at(i).getPavarde();
 
-        for(int j = 0; j < stoi(vector.at(i).ndKiekis); j++){
-            outfile << left << setw(10) << fixed << setprecision(2) << vector.at(i).ndRez.at(j);
+        for(int j = 0; j < stoi(vector.at(i).getNdKiekis()); j++){
+            outfile << left << setw(10) << fixed << setprecision(2) << vector.at(i).getNdRez().at(j);
         }
 
-        outfile << left << setw(15) << vector.at(i).egzaminoRez;
+        outfile << left << setw(15) << vector.at(i).getEgzaminoRez();
         outfile << endl;
     }
 }

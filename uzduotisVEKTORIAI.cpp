@@ -6,7 +6,6 @@ using namespace std;
 
 void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaicius);
 
-
 int main() {
     string studSkaicius;
     string dataFaileArIvesti;
@@ -32,20 +31,20 @@ int main() {
     }
 
     // rusiavimas pagal varde/pavarde
-    mergesort(visiStudentai, 0, visiStudentai.size() - 1);
+    mergesort<vector<studentas>>(visiStudentai, 0, visiStudentai.size() - 1);
 
     cout << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(20) << "Galutinis(vid.)" << setw(20) << "Galutinis(med.)" << endl;
     cout << "-------------------------------------------------------------------------------" << endl;
 
     try{
         for(int i = 0; i < stoi(studSkaicius); i++){
-            cout << setw(15) << visiStudentai[i].vardas;
-            cout << setw(15) << visiStudentai[i].pavarde;
-            cout << setw(20) << fixed << setprecision(2) << visiStudentai[i].galutinisBalas; // Galutinis(vid.)
-            if(stoi(visiStudentai[i].ndKiekis) % 2 == 0){ // Galutinis(med.)
-                cout << setw(20) << fixed << setprecision(2) << (double)(stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2)) + stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2 - 1)))/2 * 0.4 + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
+            cout << setw(15) << visiStudentai[i].getVardas();
+            cout << setw(15) << visiStudentai[i].getPavarde();
+            cout << setw(20) << fixed << setprecision(2) << visiStudentai[i].getGalutinisBalas(); // Galutinis(vid.)
+            if(stoi(visiStudentai[i].getNdKiekis()) % 2 == 0){ // Galutinis(med.)
+                cout << setw(20) << fixed << setprecision(2) << (double)(stoi(visiStudentai[i].getNdRez().at(stoi(visiStudentai[i].getNdKiekis())/2)) + stoi(visiStudentai[i].getNdRez().at(stoi(visiStudentai[i].getNdKiekis())/2 - 1)))/2 * 0.4 + (stoi(visiStudentai[i].getEgzaminoRez()) * 0.6);
             } else {
-                cout << setw(20) << fixed << setprecision(2) <<  (stoi(visiStudentai[i].ndRez.at(stoi(visiStudentai[i].ndKiekis)/2)) * 0.4) + (stoi(visiStudentai[i].egzaminoRez) * 0.6);
+                cout << setw(20) << fixed << setprecision(2) <<  (stoi(visiStudentai[i].getNdRez().at(stoi(visiStudentai[i].getNdKiekis())/2)) * 0.4) + (stoi(visiStudentai[i].getEgzaminoRez()) * 0.6);
             }
             cout << endl;
         }
@@ -64,19 +63,25 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
         string atsitiktiniaiRez;
         studentas studentas;
         cout << "iveskite " << i + 1 << " studento informacija:" << endl;
+        string v;
         cout << "Vardas: ";
-        cin >> studentas.vardas;
+        cin >> v;
+        studentas.setVardas(v);
+        string p;
         cout << "Pavarde: ";
-        cin >> studentas.pavarde;
+        cin >> p;
+        studentas.setPavarde(p);
 
         egzaminoRezIvedimas:
+        string er;
         cout << "Egzamino rezultatas: ";
-        cin >> studentas.egzaminoRez;
-        if(!isNumber(studentas.egzaminoRez)){
+        cin >> er;
+        studentas.setEgzaminoRez(er);
+        if(!isNumber(studentas.getEgzaminoRez())){
             cout << "Egzamino rezultatas turi buti sveikasis skaicius. Iveskite is naujo." << endl; 
             goto egzaminoRezIvedimas;
         }
-        if(stoi(studentas.egzaminoRez) > 10 || stoi(studentas.egzaminoRez) < 1){
+        if(stoi(studentas.getEgzaminoRez()) > 10 || stoi(studentas.getEgzaminoRez()) < 1){
             cout << "Egzamino rezultatas turi buti tarp 1 ir 10. Iveskite is naujo." << endl;
             goto egzaminoRezIvedimas;
         }
@@ -85,12 +90,14 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
         cin >> atsitiktiniaiRez;
 
         NDIvedimas:
+        string ndk;
         cout << "Namu darbu kiekis: ";
-        cin >> studentas.ndKiekis;
-        if(!isNumber(studentas.ndKiekis)){
+        cin >> ndk;
+        studentas.setNdKiekis(ndk);
+        if(!isNumber(studentas.getNdKiekis())){
             cout << "Namu darbu kiekis turi buti sveikasis skaicius. Iveskite is naujo." << endl; 
             goto NDIvedimas;
-        } else if(stoi(studentas.ndKiekis) <= 0){
+        } else if(stoi(studentas.getNdKiekis()) <= 0){
             cout << "Namu darbu kiekis turi buti daugiau uz nuli. Iveskite is naujo." << endl;
             goto NDIvedimas;
         }
@@ -100,29 +107,34 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
 
         if(atsitiktiniaiRez == "t"){
             vector<string> ndRez;
-            for (int j = 0; j < stoi(studentas.ndKiekis); j++) {
-                studentas.ndRez.push_back(to_string(rand() % 10 + 1));
-                bendrasNDbalas = stoi(studentas.ndRez.at(j)) + bendrasNDbalas;
+            for (int j = 0; j < stoi(studentas.getNdKiekis()); j++) {
+                auto x = studentas.getNdRez();
+                x.push_back(to_string(rand() % 10 + 1));
+                studentas.setNdRez(x);
+                bendrasNDbalas = stoi(studentas.getNdRez().at(j)) + bendrasNDbalas;
             }
         } else{
             vector<string> ndRez;
 
-            for (int j = 0; j < stoi(studentas.ndKiekis); j++) {
+            for (int j = 0; j < stoi(studentas.getNdKiekis()); j++) {
                 uzdRezIvedimas:
                 cout << "Rezultatas uzduoties " << j + 1 << ": ";
                 string val;
                 cin >> val;
-                studentas.ndRez.push_back(val);
+                auto x = studentas.getNdRez();
+                x.push_back(val);
+                studentas.setNdRez(x);
 
-                if(!isNumber(studentas.ndRez.at(j))){
+                if(!isNumber(studentas.getNdRez().at(j))){
                     cout << "Uzduoties rezultatas turi buti sveikasis skaicius. Iveskite is naujo." << endl;
                     goto uzdRezIvedimas;
                 } else {
-                    bendrasNDbalas = bendrasNDbalas + stoi(studentas.ndRez.at(j));
+                    bendrasNDbalas = bendrasNDbalas + stoi(studentas.getNdRez().at(j));
                 }
             }
         }
-        studentas.galutinisBalas = ((double)bendrasNDbalas/stoi(studentas.ndKiekis)) * 0.4 + (stoi(studentas.egzaminoRez) * 0.6);
+        studentas.skaiciuotiGalutiniBala();
+        //  = ((double)bendrasNDbalas/stoi(studentas.getNdKiekis())) * 0.4 + (stoi(studentas.getEgzaminoRez()) * 0.6);
 
         visiStudentai.push_back(studentas);
     }

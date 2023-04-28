@@ -16,5 +16,8 @@ compare:
 testGenerator:
 	g++ -std=c++11 functions.cpp compareFunctions.cpp testGenerator.cpp -o run && ./run
 
+uzduotisVEKTORIAI:
+	g++ -std=c++11 functions.cpp uzduotisVEKTORIAI.cpp -o run && ./run
+
 clean:
 	rm -f run studentai1000.txt studentai10000.txt studentai100000.txt studentai1000000.txt studentai10000000.txt
