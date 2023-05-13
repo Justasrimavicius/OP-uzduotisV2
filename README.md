@@ -91,3 +91,5 @@ Naudojant optimizaciją, su 100000 duomenų įrašų naudojant O2 optimizaciją 
 Duomenys su 03 optimizacija labai panašūs.
 
 
+# V1.2
+Neaišku, ar gerai suprasta salyga - panaudotos 2 "Rule of five" realizacijos, tačiau ar to užtenka ir ar jos panaudotos tinkamai pasakyti negaliu.

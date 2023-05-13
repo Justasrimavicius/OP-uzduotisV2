@@ -29,6 +29,24 @@ class studentas {
         studentas(const std::string& v, const std::string& p, const std::string& e, const std::vector<std::string>& nd, const std::string& k)
             : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
 
+        // Copy constructor
+        studentas(const studentas& other)
+        : vardas(other.vardas), pavarde(other.pavarde), egzaminoRez(other.egzaminoRez),
+          ndRez(other.ndRez), ndKiekis(other.ndKiekis), galutinisBalas(other.galutinisBalas) {}
+
+        // Copy assignment operator
+        studentas& operator=(const studentas& other) {
+            if (this != &other) {
+                vardas = other.vardas;
+                pavarde = other.pavarde;
+                egzaminoRez = other.egzaminoRez;
+                ndRez = other.ndRez;
+                ndKiekis = other.ndKiekis;
+                galutinisBalas = other.galutinisBalas;
+            }
+            return *this;
+        }
+
         void setVardas(const std::string& v) { vardas = v; }
         std::string getVardas() const { return vardas; }
 
