@@ -16,22 +16,39 @@
 
 using namespace std;
 
-class studentas {
+class zmogus {
+    protected: 
+        std::string vardas;
+        std::string pavarde;
+    public:
+
+        zmogus(const std::string& v, const std::string& p) : vardas(v), pavarde(p) {}
+
+    
+        virtual void dummy() = 0;
+
+        void setVardas(const std::string& v) { vardas = v; }
+        std::string getVardas() const { return vardas; }
+
+        void setPavarde(const std::string& p) { pavarde = p; }
+        std::string getPavarde() const { return pavarde; }
+};
+
+
+class studentas : public zmogus {
     private:
-    std::string vardas;
-    std::string pavarde;
     std::string egzaminoRez;
     std::vector<std::string> ndRez;
     std::string ndKiekis;
     double galutinisBalas;
     public:
-        studentas() : vardas(""), pavarde(""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
+        studentas() : zmogus("", ""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
         studentas(const std::string& v, const std::string& p, const std::string& e, const std::vector<std::string>& nd, const std::string& k)
-            : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
+            : zmogus(v, p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
 
         // Copy constructor
         studentas(const studentas& other)
-        : vardas(other.vardas), pavarde(other.pavarde), egzaminoRez(other.egzaminoRez),
+        : zmogus(other), egzaminoRez(other.egzaminoRez),
           ndRez(other.ndRez), ndKiekis(other.ndKiekis), galutinisBalas(other.galutinisBalas) {}
 
         // Copy assignment operator
@@ -47,11 +64,11 @@ class studentas {
             return *this;
         }
 
-        void setVardas(const std::string& v) { vardas = v; }
-        std::string getVardas() const { return vardas; }
+        void setVardas(const std::string& v) { zmogus::setVardas(v); }
+        std::string getVardas() const { return zmogus::getVardas(); }
 
-        void setPavarde(const std::string& p) { pavarde = p; }
-        std::string getPavarde() const { return pavarde; }
+        void setPavarde(const std::string& p) { zmogus::setPavarde(p); }
+        std::string getPavarde() const { return zmogus::getPavarde(); }
 
         void setEgzaminoRez(const std::string& e) { egzaminoRez = e; }
         std::string getEgzaminoRez() const { return egzaminoRez; }
@@ -73,28 +90,44 @@ class studentas {
             double galutinis = 0.4 * ndSuma / ndRez.size() + 0.6 * egzaminoRezultatas;
             galutinisBalas = galutinis;
         }
+        void dummy() override { }
 
 
 };
-
-class studentasList {
+class studentasList : public zmogus {
     private:
-    std::string vardas;
-    std::string pavarde;
     std::string egzaminoRez;
     std::list<std::string> ndRez;
     std::string ndKiekis;
     double galutinisBalas;
     public:
-        studentasList() : vardas(""), pavarde(""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
+        studentasList() : zmogus("", ""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
         studentasList(const std::string& v, const std::string& p, const std::string& e, const std::list<std::string>& nd, const std::string& k)
-            : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
+            : zmogus(v, p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
 
-        void setVardas(const std::string& v) { vardas = v; }
-        std::string getVardas() const { return vardas; }
+        // Copy constructor
+        studentasList(const studentasList& other)
+        : zmogus(other), egzaminoRez(other.egzaminoRez),
+          ndRez(other.ndRez), ndKiekis(other.ndKiekis), galutinisBalas(other.galutinisBalas) {}
 
-        void setPavarde(const std::string& p) { pavarde = p; }
-        std::string getPavarde() const { return pavarde; }
+        // Copy assignment operator
+        studentasList& operator=(const studentasList& other) {
+            if (this != &other) {
+                vardas = other.vardas;
+                pavarde = other.pavarde;
+                egzaminoRez = other.egzaminoRez;
+                ndRez = other.ndRez;
+                ndKiekis = other.ndKiekis;
+                galutinisBalas = other.galutinisBalas;
+            }
+            return *this;
+        }
+
+        void setVardas(const std::string& v) { zmogus::setVardas(v); }
+        std::string getVardas() const { return zmogus::getVardas(); }
+
+        void setPavarde(const std::string& p) { zmogus::setPavarde(p); }
+        std::string getPavarde() const { return zmogus::getPavarde(); }
 
         void setEgzaminoRez(const std::string& e) { egzaminoRez = e; }
         std::string getEgzaminoRez() const { return egzaminoRez; }
@@ -116,39 +149,44 @@ class studentasList {
             double galutinis = 0.4 * ndSuma / ndRez.size() + 0.6 * egzaminoRezultatas;
             galutinisBalas = galutinis;
         }
+        void dummy() override { }
 
 
 };
-
-
-// struct studentasList {
-//     std::string vardas;
-//     std::string pavarde;
-//     std::string egzaminoRez;
-//     std::list<std::string> ndRez;
-//     std::string ndKiekis;
-//     double galutinisBalas;
-// };
-
-
-class studentasDeque {
+class studentasDeque : public zmogus {
     private:
-    std::string vardas;
-    std::string pavarde;
     std::string egzaminoRez;
     std::deque<std::string> ndRez;
     std::string ndKiekis;
     double galutinisBalas;
     public:
-        studentasDeque() : vardas(""), pavarde(""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
+        studentasDeque() : zmogus("", ""), egzaminoRez(""), ndRez({}), ndKiekis("0"), galutinisBalas(0) {}
         studentasDeque(const std::string& v, const std::string& p, const std::string& e, const std::deque<std::string>& nd, const std::string& k)
-            : vardas(v), pavarde(p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
+            : zmogus(v, p), egzaminoRez(e), ndRez(nd), ndKiekis(k), galutinisBalas(0) {}
 
-        void setVardas(const std::string& v) { vardas = v; }
-        std::string getVardas() const { return vardas; }
+        // Copy constructor
+        studentasDeque(const studentasDeque& other)
+        : zmogus(other), egzaminoRez(other.egzaminoRez),
+          ndRez(other.ndRez), ndKiekis(other.ndKiekis), galutinisBalas(other.galutinisBalas) {}
 
-        void setPavarde(const std::string& p) { pavarde = p; }
-        std::string getPavarde() const { return pavarde; }
+        // Copy assignment operator
+        studentasDeque& operator=(const studentasDeque& other) {
+            if (this != &other) {
+                vardas = other.vardas;
+                pavarde = other.pavarde;
+                egzaminoRez = other.egzaminoRez;
+                ndRez = other.ndRez;
+                ndKiekis = other.ndKiekis;
+                galutinisBalas = other.galutinisBalas;
+            }
+            return *this;
+        }
+
+        void setVardas(const std::string& v) { zmogus::setVardas(v); }
+        std::string getVardas() const { return zmogus::getVardas(); }
+
+        void setPavarde(const std::string& p) { zmogus::setPavarde(p); }
+        std::string getPavarde() const { return zmogus::getPavarde(); }
 
         void setEgzaminoRez(const std::string& e) { egzaminoRez = e; }
         std::string getEgzaminoRez() const { return egzaminoRez; }
@@ -170,18 +208,10 @@ class studentasDeque {
             double galutinis = 0.4 * ndSuma / ndRez.size() + 0.6 * egzaminoRezultatas;
             galutinisBalas = galutinis;
         }
+        void dummy() override { }
 
 
 };
-
-// struct studentasDeque {
-//     std::string vardas;
-//     std::string pavarde;
-//     std::string egzaminoRez;
-//     std::deque<std::string> ndRez;
-//     std::string ndKiekis;
-//     double galutinisBalas;
-// };
 
 bool isNumber(const std::string &s);
 

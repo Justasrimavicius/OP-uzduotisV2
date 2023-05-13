@@ -93,3 +93,6 @@ Duomenys su 03 optimizacija labai panašūs.
 
 # V1.2
 Neaišku, ar gerai suprasta salyga - panaudotos 2 "Rule of five" realizacijos, tačiau ar to užtenka ir ar jos panaudotos tinkamai pasakyti negaliu.
+
+# V1.5
+Base klase Zmogus implementuota - is jos klase Studentas paveldi vardo bei pavarde getter ir setter funkcijas. Base klase Zmogus del dummy virtual funckijos negali buti kvieciama atskirai.
