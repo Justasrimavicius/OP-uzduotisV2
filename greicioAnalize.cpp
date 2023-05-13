@@ -11,6 +11,7 @@ int main(){
         for(int i = 1000; i <= 10000000; i = i * 10){
             generateFile(to_string(i), "10");
         }
+        // 
     } else {
         for(int i = 1000; i <= 10000000; i = i * 10){
             
