@@ -73,6 +73,11 @@
         "deque": "cpp",
         "stack": "cpp",
         "list": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "__tree": "cpp",
+        "future": "cpp",
+        "map": "cpp",
+        "regex": "cpp",
+        "set": "cpp"
     }
 }

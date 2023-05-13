@@ -95,4 +95,8 @@ Duomenys su 03 optimizacija labai panašūs.
 Neaišku, ar gerai suprasta salyga - panaudotos 2 "Rule of five" realizacijos, tačiau ar to užtenka ir ar jos panaudotos tinkamai pasakyti negaliu.
 
 # V1.5
-Base klase Zmogus implementuota - is jos klase Studentas paveldi vardo bei pavarde getter ir setter funkcijas. Base klase Zmogus del dummy virtual funckijos negali buti kvieciama atskirai.
+Base klasė Zmogus implementuota - iš jos klasė Studentas paveldi vardo bei pavardės getter ir setter funkcijas. Base klasė Zmogus dėl dummy virtual funckijos negali būti kviečiama atskirai.
+
+# V2.0
+Finalinė projekto versija. Padaryta minimali dokumentacija - rodomi failai, jų funkcijos, klasės, trumpas vienos funkcijos aprašymas kaip koncepto suvokimo įrodymas.
+Sukurtas testavimo failas test.cpp, naudojantis Catch testavimo biblioketą. Testuojama tik viena funkcija, vėl gi, koncepto suvokimo įrodymui.

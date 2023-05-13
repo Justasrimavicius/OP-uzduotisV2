@@ -1,3 +1,8 @@
+/** \file functions.h
+    \brief A Documented file. Some cool documentation is here.
+    
+    Details: ...
+*/
 
 #include <cctype>
 #include <fstream>
@@ -16,7 +21,12 @@
 
 using namespace std;
 
+
 class zmogus {
+    /*! \brief Zmogaus klase.
+ *
+ *  Daug teksto apie zmogaus klase.
+ */
     protected: 
         std::string vardas;
         std::string pavarde;

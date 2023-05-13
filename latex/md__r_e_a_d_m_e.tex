@@ -1,0 +1,48 @@
+\chapter{OP-\/uzduotis1}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{OP-\/uzduotis1@{OP-\/uzduotis1}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+Šiame projekte bus padaryta programa, kuri galės\+:
+
+nuskaityti vardą ir pavardę. nuskaityti n atliktų namų darbų rezultatus (10-\/balėje sistemoje), o taip pat egzamino (egz) rezultatą.
+
+Tuomet iš šių duomenų, suskaičiuoti galutinį balą (galutinis)\+: GALUTINIS = 0.\+4 \texorpdfstring{$\ast$}{*} vidurkis + 0.\+6 \texorpdfstring{$\ast$}{*} egzaminas.
+
+Kriterijai\+: Turi būti 6 versijos\+: v0.\+1, v0.\+2, v0.\+3, v0.\+4, v0.\+5 ir v1.\+0. Kiekviena versija turės savo atskirus reikalavius, kurie bus surašyti žemiau. Neturi būti kodo klaidų -\/ įvedami blogo tipo duomenys, neįvadami namų darbai, ...\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{V0.\+1}{V0.1}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Pagal aprašytus užduoties reikalavimus realizuokite programą, kuri nuskaito vartotojų įvedamus reikiamus duomenis (struktūros elementai)\+: studento vardą ir pavardę; namų darbų ir egzamino rezultatą;
+
+Baigus duomenų įvedimą, suskaičiuoja galutinį balą ir juos pateikia į ekraną tokiu ar panašiu pavidalu (kur galutinis apskaičiuotas balas pateikiamas dviejų skaičių po kablelio tikslumu)\+: Pavardė Vardas Galutinis(vid./med.)
+
+Čia galutinis rezultatas gali būti skaičiuojamas naudojant namų darbų vidutinį balą arba medianą.
+
+Sukurti 2 atskirus failus(darbartiniu atveju -\/ uzduotis\+MASYVAI.\+cpp ir uzduotis\+VEKTORIAI.\+cpp) kurie studento namų darbų rezultatų įvedimui naudotų dinaminius masyvus ir vektorius.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{V0.\+2}{V0.2}}\label{md__r_e_a_d_m_e_autotoc_md2}
+Papildykite programos versiją (v0.\+1) taip, kad būtų galima duomenis ne tik įvesti bet ir nuskaityti iš failo.
+
+Reikalavimai output’ui\+: studentai turi būti surūšiuoti pagal vardus (ar pavardes) ir visi stulpeliai būtų gražiai \"{}išlygiuoti\"{}.\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{V0.\+3}{V0.3}}\label{md__r_e_a_d_m_e_autotoc_md3}
+Papildyta V0.\+2 versija -\/ \doxylink{functions_8h_source}{functions.\+h} faile perkelta strucktura bei rikiavimo algoritmas, prideti try/catch blokai.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{V0.\+4}{V0.4}}\label{md__r_e_a_d_m_e_autotoc_md4}
+Papildyta V0.\+3 versija -\/ sukurtos šios funkcijos\+: sort\+Students() -\/ surikiuoja studentus į atskirus failus pagal jų galutinį balą(\texorpdfstring{$<$}{<} 5 studentai eis į ...blogi.\+txt, likusieji į ...protingi.\+txt); generate\+File() -\/ sukuria failą, kuriame yra tam tikras kiekis studentų su tam tikru kiekiu namų darbų; Ir šie failai\+: test\+Generator.\+cpp -\/ generuoja testavimo failus. greicio\+Analize.\+cpp -\/ atlieka greicio analize(sukuria failus su 1000, 10000, 100000, ... studentų, juos nuskaito, atskiria į skirtingus failus).\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{V0.\+5}{V0.5}}\label{md__r_e_a_d_m_e_autotoc_md5}
+Procesoriaus tipas Apple M1 Branduoliai 8 Procesoriaus modelis Apple M1 (8 branduolių)
+
+Operatyvioji RAM atmintis 8 GB Kietasis diskas 256 GB Atminties tipas SSD
+
+Vaizdo plokštė Apple M1 Vaizdo plokštės modelis Apple M1 (7 branduolių)\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{V1.\+0}{V1.0}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Optimizacijos funkcija, testuojanti vector, list ir deque konteineriu naudojimo sparta. rusiavimo\+Optimizavimas.\+cpp faile galima kurti studentu failus, testuoti vektor konteineri nenaudojant tam skirtu algoritmu ir juos naudojant, bei testuoti deque, list ir vector konteinerius naudojant 2 optimizavimo metodus.
+
+Funkciju paleidimas aprasytas makefile\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{V1.\+1}{V1.1}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Struct duomenų tipo pakeitimas į class. Dauguma funkcijų buvo atnaujintos dėl šių pakeitimų. Greičio palyginimas -\/ deque struktūra, be funkcijų optimizacijos(rusiavimo\+Optimizavimas.\+cpp, 2 optimizacija)\+: Naudojant klases\+:
+
+1000 0.\+01464 10000 1.\+48135 100000 153.\+69425
+
+Naudojant struktūras\+: 1000 0.\+01664 10000 1.\+49143 100000 151.\+95475
+
+Su mažiau duomenų, naudojant klases vietoj struktūrų, klasės yra truputį greitesnės už struktūras(labai minimaliai).
+
+Naudojant -\/O2 optimizavimą su klasėmis\+:
+
+1000 0.\+00097 10000 0.\+09486 100000 9.\+49361
+
+Naudojant optimizaciją, su 1000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 15 kartų greičiau. Naudojant optimizaciją, su 10000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 15.\+5 kartų greičiau. Naudojant optimizaciją, su 100000 duomenų įrašų naudojant O2 optimizaciją ir klases, programa veikia maždaug 16 kartų greičiau.
+
+Duomenys su 03 optimizacija labai panašūs.\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{V1.\+2}{V1.2}}\label{md__r_e_a_d_m_e_autotoc_md8}
+Neaišku, ar gerai suprasta salyga -\/ panaudotos 2 \"{}\+Rule of five\"{} realizacijos, tačiau ar to užtenka ir ar jos panaudotos tinkamai pasakyti negaliu.\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{V1.\+5}{V1.5}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Base klase Zmogus implementuota -\/ is jos klase Studentas paveldi vardo bei pavarde getter ir setter funkcijas. Base klase Zmogus del dummy virtual funckijos negali buti kvieciama atskirai. 
