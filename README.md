@@ -100,3 +100,49 @@ Base klasė Zmogus implementuota - iš jos klasė Studentas paveldi vardo bei pa
 # V2.0
 Finalinė projekto versija. Padaryta minimali dokumentacija - rodomi failai, jų funkcijos, klasės, trumpas vienos funkcijos aprašymas kaip koncepto suvokimo įrodymas.
 Sukurtas testavimo failas test.cpp, naudojantis Catch testavimo biblioketą. Testuojama tik viena funkcija, vėl gi, koncepto suvokimo įrodymui.
+
+# V3.0
+std::vector atkartojimas.
+Sukurta customVector klasė(customVector.h) ir atliktas jos testavimas.
+Keli testavimo atvejai(visi testai matomi testVector.cpp):
+    
+    Vektoriaus initializavimas:
+        customVector<int> vec;
+        REQUIRE(vec.size() == 0);
+        REQUIRE(vec.empty());
+
+    Elementų gavimas:
+        customVector<int> vec = {1, 2, 3, 4, 5};
+        REQUIRE(vec.at(0) == 1);
+        REQUIRE(vec.at(2) == 3);
+        REQUIRE(vec.at(4) == 5);
+        REQUIRE(vec.front() == 1);
+        REQUIRE(vec.back() == 5);
+        REQUIRE(vec[0] == 1);
+        REQUIRE(vec[2] == 3);
+        REQUIRE(vec[4] == 5);
+
+    push_back(), size(), clear() funckijos:
+        customVector<int> myVector;
+        myVector.push_back(5);
+        myVector.push_back(6);
+        myVector.push_back(7);
+        myVector.push_back(8);
+        myVector.push_back(9);
+        REQUIRE(myVector.size() == 5);
+        REQUIRE(myVector.back() == 9);
+        REQUIRE(myVector.front() == 5);
+        vec.clear();
+        REQUIRE(vec.size() == 0);
+        REQUIRE(vec.empty());
+
+Greičio palyginimas:
+    10000       std::vector 0.004s  customVector 0.00015s
+    100000      std::vector 0.004s  customVector 0.001s
+    1000000     std::vector 0.025s  customVector 0.009s
+    10000000    std::vector 0.29s   customVector 0.1s
+    100000000   std::vector 2.9s    customVector 1.16s
+
+Perskirtymų kiekis su 100mil. elementų naudojant abu vektorių tipus buvo 27.
+    
+    

@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "customVector.h"
 #include "compare.h"
 #include <algorithm>
 
@@ -18,12 +19,15 @@ int main(){
     } else {
         cout << "Koki konteinerio tipa testuoti? 'v' - vector, 'l' - list, 'd' - deque." << endl;
         cin >> conteinerType;
+        customVector<studentas> visiStudentaiVEC;
+        customVector<studentas> geriStudentaiVEC;
+        customVector<studentas> blogiStudentaiVEC;
 
         for(int i = 1000; i <= 10000000; i = i * 10){
             if(conteinerType == "v"){
-                vector<studentas> visiStudentaiVEC;
-                vector<studentas> geriStudentaiVEC;
-                vector<studentas> blogiStudentaiVEC;
+                // customVector<studentas> visiStudentaiVEC;
+                // customVector<studentas> geriStudentaiVEC;
+                // customVector<studentas> blogiStudentaiVEC;
                 
                 auto t1startVEC = chrono::high_resolution_clock::now();
                 duomenysIsFailo(visiStudentaiVEC, "studentai"+to_string(i));
@@ -53,6 +57,10 @@ int main(){
                 cout << "VEC: " << t2_durVEC.count() << "s" << endl;
                 cout << "Skirstymo i dvi grupes greitis:" << endl;
                 cout << "VEC: " << t3_durVEC.count() << "s" << endl;
+
+                // visiStudentaiVEC.clear();
+                // geriStudentaiVEC.clear();
+                // blogiStudentaiVEC.clear();
 
             } else if(conteinerType == "l"){
 

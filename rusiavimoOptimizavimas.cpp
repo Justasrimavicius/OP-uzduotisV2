@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "customVector.h"
 #include "compare.h"
 #include <algorithm>
 
@@ -17,8 +18,8 @@ int main(){
         }
     } else if(generateFiles == "v"){
         for(int i = 1000; i <= 100000; i = i * 10){
-            vector<studentas> visiStudentaiVEC; 
-            vector<studentas> geriStudentaiVEC;
+            customVector<studentas> visiStudentaiVEC; 
+            customVector<studentas> geriStudentaiVEC;
             
             duomenysIsFailo(visiStudentaiVEC, "studentai"+to_string(i));
 
@@ -40,8 +41,8 @@ int main(){
             pirmosOptimizacijosLaikai.push_back(t1_durVEC.count());
         }
         for(int i = 1000; i <= 100000; i = i * 10){
-            vector<studentas> visiStudentaiVEC; 
-            vector<studentas> geriStudentaiVEC;
+            customVector<studentas> visiStudentaiVEC; 
+            customVector<studentas> geriStudentaiVEC;
             
             duomenysIsFailo(visiStudentaiVEC, "studentai"+to_string(i));
             cout << visiStudentaiVEC.size() << endl;
@@ -55,7 +56,7 @@ int main(){
                 return student.getGalutinisBalas() < 5;
             });
 
-            visiStudentaiVEC.erase(visiStudentaiVEC.begin(), it);
+            // visiStudentaiVEC.erase(visiStudentaiVEC.begin(), it);
 
             auto t1endVEC = chrono::high_resolution_clock::now();
 
@@ -80,9 +81,9 @@ int main(){
 
         for(int i = 1000; i <= 100000; i = i * 10){
             if(conteinerType == "v"){
-                vector<studentas> visiStudentaiVEC;
-                vector<studentas> geriStudentaiVEC;
-                vector<studentas> blogiStudentaiVEC;
+                customVector<studentas> visiStudentaiVEC;
+                customVector<studentas> geriStudentaiVEC;
+                customVector<studentas> blogiStudentaiVEC;
                 
                 duomenysIsFailo(visiStudentaiVEC, "studentai"+to_string(i));
 
@@ -146,8 +147,8 @@ int main(){
         // 2 optimizacijos budas - kuriamas tik 1 konteineris
         for(int i = 1000; i <= 100000; i = i * 10){
             if(conteinerType == "v"){
-                vector<studentas> visiStudentaiVEC; 
-                vector<studentas> geriStudentaiVEC;
+                customVector<studentas> visiStudentaiVEC; 
+                customVector<studentas> geriStudentaiVEC;
                 
                 duomenysIsFailo(visiStudentaiVEC, "studentai"+to_string(i));
 

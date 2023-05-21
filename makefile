@@ -6,7 +6,7 @@ rusiavimoOptimizavimas:
 
 # Failas palygina deque, vector ir list tipo konteineriu sparta ivairiuose situacijose.
 greicioAnalize:
-	g++ -std=c++11 functions.cpp compareFunctions.cpp greicioAnalize.cpp -o run && ./run
+	g++ -std=c++11 functions.cpp compareFunctions.cpp greicioAnalize.cpp  -o run && ./run
 
 # Failas atlieka tik vector tipo greicio analize.
 compare:

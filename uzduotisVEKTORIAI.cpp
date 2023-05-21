@@ -1,15 +1,16 @@
 #include "functions.h"
+#include "customVector.h"
 #include <string>
-#include "vector"
+// #include "customVector"
 
 using namespace std;
 
-void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaicius);
+void duomenysIvedamiKonsoleje(customVector<studentas>& visiStudentai, string studSkaicius);
 
 int main() {
     string studSkaicius;
     string dataFaileArIvesti;
-    vector<studentas> visiStudentai;
+    customVector<studentas> visiStudentai;
 
     cout << "Ar norite duomenis nuskaityti is failo? Mygtukas 'f' - duomenys vedami konsoleje. Bet kas kitas - failo pavadinimas(.txt gale nebereikia - bus automatiskai prideta)" << endl;
     cin >> dataFaileArIvesti; // arba "f", arba failo pavadinimas
@@ -31,7 +32,7 @@ int main() {
     }
 
     // rusiavimas pagal varde/pavarde
-    mergesort<vector<studentas>>(visiStudentai, 0, visiStudentai.size() - 1);
+    mergesort<customVector<studentas>>(visiStudentai, 0, visiStudentai.size() - 1);
 
     cout << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(20) << "Galutinis(vid.)" << setw(20) << "Galutinis(med.)" << endl;
     cout << "-------------------------------------------------------------------------------" << endl;
@@ -55,7 +56,7 @@ int main() {
     return 0;
 }
 
-void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaicius){
+void duomenysIvedamiKonsoleje(customVector<studentas>& visiStudentai, string studSkaicius){
 
     srand(time(0));
 
@@ -106,7 +107,7 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
         int bendrasNDbalas = 0;
 
         if(atsitiktiniaiRez == "t"){
-            vector<string> ndRez;
+            customVector<string> ndRez;
             for (int j = 0; j < stoi(studentas.getNdKiekis()); j++) {
                 auto x = studentas.getNdRez();
                 x.push_back(to_string(rand() % 10 + 1));
@@ -114,7 +115,7 @@ void duomenysIvedamiKonsoleje(vector<studentas>& visiStudentai, string studSkaic
                 bendrasNDbalas = stoi(studentas.getNdRez().at(j)) + bendrasNDbalas;
             }
         } else{
-            vector<string> ndRez;
+            customVector<string> ndRez;
 
             for (int j = 0; j < stoi(studentas.getNdKiekis()); j++) {
                 uzdRezIvedimas:

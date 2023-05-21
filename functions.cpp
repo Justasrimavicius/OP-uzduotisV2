@@ -1,5 +1,5 @@
 #include "functions.h"
-
+#include "customVector.h"
 bool isNumber(const std::string &s){
     for (int i = 0; i < s.length(); i++) {
         if (!isdigit(s[i])) {
@@ -10,7 +10,7 @@ bool isNumber(const std::string &s){
 }
 
 
-void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName){
+void duomenysIsFailo(customVector<studentas>& visiStudentai, string fileName){
     try{
         ifstream failas(fileName + ".txt");
         if(failas.fail())throw (false);
@@ -91,7 +91,7 @@ int generateFile(string studKiekis, string ndKiekis){
     return 0;
 }
 
-void sortStudents(vector<studentas> visiStudentai, vector<studentas>& blogi, vector<studentas>& geri){ // "studentai1000" - be .txt
+void sortStudents(customVector<studentas> visiStudentai, customVector<studentas>& blogi, customVector<studentas>& geri){ // "studentai1000" - be .txt
     for(int i = 0; i < visiStudentai.size(); i++){
         if(visiStudentai.at(i).getGalutinisBalas() < 5){
             blogi.push_back(visiStudentai.at(i));
@@ -101,7 +101,7 @@ void sortStudents(vector<studentas> visiStudentai, vector<studentas>& blogi, vec
     }
 }
 
-void outputFile(string fileName, vector<studentas>& vector){
+void outputFile(string fileName, customVector<studentas>& vector){
     ofstream outfile(fileName + ".txt");
 
     outfile << left << setw(20) << "Vardas" << left << setw(20) << "Pavarde";

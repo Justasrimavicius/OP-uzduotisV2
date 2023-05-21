@@ -18,6 +18,7 @@
 #include <random>
 #include <list>
 #include <deque>
+#include "customVector.h"
 
 using namespace std;
 
@@ -278,10 +279,10 @@ void mergesort(T& arr, int l, int r) {
     }
 }
 
-void duomenysIsFailo(vector<studentas>& visiStudentai, string fileName);
+void duomenysIsFailo(customVector<studentas>& visiStudentai, string fileName);
 
 int generateFile(string studKiekis, string ndKiekis);
 
-void sortStudents(vector<studentas> visiStudentai, vector<studentas>& geri, vector<studentas>& blogi);
+void sortStudents(customVector<studentas> visiStudentai, customVector<studentas>& geri, customVector<studentas>& blogi);
 
-void outputFile(string fileName, vector<studentas>& vector);
+void outputFile(string fileName, customVector<studentas>& vector);

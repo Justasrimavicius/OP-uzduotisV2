@@ -17,9 +17,9 @@ int main(){
             
             auto t1start = chrono::high_resolution_clock::now(); // visos programos greicio startas
             
-            vector<studentas> visiStudentai;
-            vector<studentas> geriStudentai;
-            vector<studentas> blogiStudentai;
+            customVector<studentas> visiStudentai;
+            customVector<studentas> geriStudentai;
+            customVector<studentas> blogiStudentai;
             
             auto t2start = chrono::high_resolution_clock::now(); // 3 testas - duomenu nuskaitymas pradzia
             duomenysIsFailo(visiStudentai, "studentai"+to_string(i));
